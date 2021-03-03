@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h1>Exercício 3</h1>
+    <p>solicita ao usuário um número com o preço de um produto e outro número com o percentual de desconto a aplica. Calcule o valor final do produto a partir do percentual de desconto e exiba como resultado.</p>
+
+    <script>
+        let prec = parseFloat(prompt("Valor do produto:"))
+        let desc = parseFloat(prompt("Desconto em porcentagem:"))
+
+        let precf = prec - (prec * desc / 100)
+
+        document.write(`
+            <ul>
+                <li>O preço com desconto é de ${precf}</b></li>
+            </ul>
+        `)
+    </script>
+</body>
+<footer>
+    <h3>&copy; Gabriel Gomes da Silva</h3>
+</footer>
+</html>
