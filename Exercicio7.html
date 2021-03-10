@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="base.css">
+    <title>Exercício 7</title>
+</head>
+<body>
+    <h1>Exercício 7</h1>
+    <p>Como está o clima na sua cidade?</p>
+
+    <form id="form">
+        <select id="select">
+            <option value="">Escolha</option>
+            <option value="sunny">Ensolarado</option>
+            <option value="rainy">Chuvoso</option>
+            <option value="snowing">Nevando</option>
+            <option value="overcast">Nublado</option>
+        </select>
+        <button>Confirmar</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function onSubmit(event) {
+            event.preventDefault()
+
+            let choice = select.value
+  
+            if (choice === 'sunny') {
+                result.innerHTML = 'Está sol! vamos para a praia?'
+            } else if (choice === 'rainy') {
+                result.innerHTML = 'Está chovendo! leve seu guarda-chuva!'
+            } else if (choice === 'snowing') {
+                result.innerHTML = 'Está nevando! vamos fazer um boneco de neve?'
+            } else if (choice === 'overcast') {
+                result.innerHTML = 'Está nublado! sem guarda-chuva, vai arriscar?'
+            } else {
+                result.innerHTML = ''
+            }
+        }
+
+        form.addEventListener('submit', onSubmit)
+    </script>
+</body>
+</html>

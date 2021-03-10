@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="base.css">
+    <title>Exercício 8</title>
+</head>
+<body>
+    <h1>Exercício 8</h1>
+    <p>Responda esse formulário.</p>
+
+    <form id="form">
+        <input id="field1" type="text" placeholder="Seu nome">
+        <select id="select">
+            <option value="">Escolha</option>
+            <option value="man">Homem</option>
+            <option value="woman">Mulher</option>
+        </select>
+        <button>Enviar</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function onSubmit(event) {
+            event.preventDefault()
+            
+            let choice = select.value
+            let name = field1.value 
+
+            if (choice === 'man') {
+                result.innerHTML = `${name}`
+                result.style.color = '#07fffe'
+            } else if (choice === 'woman') {
+                result.innerHTML = `${name}`
+                result.style.color = '#ffa6fe'
+            } else {
+                result.innerHTML = ''
+            }
+        }
+
+        form.addEventListener('submit', onSubmit)
+    </script>
+</body>
+</html>
