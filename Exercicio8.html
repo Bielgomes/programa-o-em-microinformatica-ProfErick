@@ -12,13 +12,13 @@
     <p>Responda esse formulário.</p>
 
     <form id="form">
-        <input id="field1" type="text" placeholder="Seu nome">
-        <select id="select">
+        <input id="field1" type="text" placeholder="Qual o seu nome?">
+        <select id="field2">
             <option value="">Escolha</option>
-            <option value="man">Homem</option>
-            <option value="woman">Mulher</option>
+            <option value="m">Masculino</option>
+            <option value="f">Feminino</option>
         </select>
-        <button>Enviar</button>
+        <button>cumprimentar</button>
     </form>
 
     <div id="result"></div>
@@ -27,17 +27,32 @@
         function onSubmit(event) {
             event.preventDefault()
             
-            let choice = select.value
             let name = field1.value 
+            let gender = field2.value
 
-            if (choice === 'man') {
-                result.innerHTML = `${name}`
-                result.style.color = '#07fffe'
-            } else if (choice === 'woman') {
-                result.innerHTML = `${name}`
-                result.style.color = '#ffa6fe'
+            field1.className = ''
+            field2.className = ''
+
+            if (name === '') {
+                result.innerHTML = '<p>Por favor digite um nome</p>'
+                field1.className = 'negative'
+                field2.focus()
+                return
+            }
+
+            if (gender === '') {
+                result.innerHTML = '<p>Por favor selecione um gênero</p>'
+                field2.className = 'negative'
+                field2.focus()
+                return
+            }
+
+            if (gender === 'm') {
+                result.innerHTML = `<p class="woman">Bem-vindo ${name}, divirta-se!</p>`
+                //result.style.color = '#07fffe'
             } else {
-                result.innerHTML = ''
+                result.innerHTML = `<p class="man">Bem-vinda ${name}, divirta-se!</p>`
+                //result.style.color = '#ffa6fe'
             }
         }
 
