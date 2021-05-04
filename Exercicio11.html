@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="base.css">
+    <title>CADASTRO DE PROFESSOR</title>
+</head>
+<body>
+    <h1>Sistema de cadastro de professores</h1>
+    <form id="form">
+        <input id="field1" type="text" placeholder="Nome">
+        <input id="field2" type="text" placeholder="Sobrenome">
+        <input id="field3" type="text" placeholder="Titulação">
+        <select id="select">
+            <option value="">Gênero</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+        <button>Cadastrar</button>
+    </form>
+
+    <div class="buttons">
+        <button id="showAll">Exibir todos</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        var teachers = []
+
+        function onSubmit(event) {
+            event.preventDefault()
+
+            let fistName = field1.value
+            let lastName = field2.value
+            let degree = field3.value
+            let gender = select.value
+
+            result.innerHTML = ''
+            field1.className = ''
+            field2.className = ''
+            field3.className = ''
+            select.className = ''
+
+            if (fistName === '' && !isNaN(fistName)) {
+                field1.className = 'negative'
+                field1.focus()
+                result.innerHTML = '<p>Informe o nome</p>'
+                return
+            }
+
+            if (lastName === '' && !isNaN(lastName)) {
+                field2.className = 'negative'
+                field2.focus()
+                result.innerHTML = '<p>Informe um sobrenome válido</p>'
+                return
+            }
+
+            if (degree == '' && !isNaN(degree)) {
+                field3.className = 'negative'
+                field3.focus()
+                result.innerHTML = '<p>Informe uma titulação válida</p>'
+                return
+            }
+
+            if (gender === '') {
+                select.className = 'negative'
+                select.focus()
+                result.innerHTML = '<p>Informe um género válido</p>'
+                return
+            }
+
+            let teacher = {
+                firstName: fistName,
+                lastName: lastName,
+                degree: degree,
+                gender: gender
+            }
+
+            teachers.push(teacher)
+
+            field1.value = ''
+            field2.value = ''
+            field3.value = ''
+        }
+
+        form.addEventListener('submit', onSubmit)
+
+        function onClick(event) {
+            event.preventDefault()
+
+            result.innerHTML = ''
+
+            for (let teacher of teachers) {
+                result.innerHTML += `<p>Nome: ${teacher.firstName} ${teacher.lastName} <br>Titulação: ${teacher.degree} <br>Sexo: ${teacher.gender}</p>`
+            }
+
+        }
+
+        showAll.addEventListener('click', onClick)
+    </script>
+</body>
+</html>
